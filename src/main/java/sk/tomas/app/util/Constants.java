@@ -5,5 +5,6 @@ package sk.tomas.app.util;
  */
 public class Constants {
 
+    public static final String BASE_PATH = "/app";
     public static final String IAM_ADDRESS = "http://localhost:8090/";
 }

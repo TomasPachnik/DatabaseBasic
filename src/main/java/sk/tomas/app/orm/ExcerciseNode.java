@@ -23,15 +23,19 @@ public class ExcerciseNode extends EntityNode {
     @Column
     private int repetations;
 
+    //cas cvicenia
+    private Long timestamp;
+
     public ExcerciseNode() {
     }
 
-    public ExcerciseNode(String uuid, String name, int level, int series, int repetations) {
+    public ExcerciseNode(String uuid, String name, int level, int series, int repetations, Long timestamp) {
         super(uuid);
         this.name = name;
         this.level = level;
         this.series = series;
         this.repetations = repetations;
+        this.timestamp = timestamp;
     }
 
     public String getName() {
@@ -66,6 +70,14 @@ public class ExcerciseNode extends EntityNode {
         this.repetations = repetations;
     }
 
+    public Long getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Long timestamp) {
+        this.timestamp = timestamp;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -77,7 +89,8 @@ public class ExcerciseNode extends EntityNode {
         if (level != that.level) return false;
         if (series != that.series) return false;
         if (repetations != that.repetations) return false;
-        return name != null ? name.equals(that.name) : that.name == null;
+        if (name != null ? !name.equals(that.name) : that.name != null) return false;
+        return timestamp != null ? timestamp.equals(that.timestamp) : that.timestamp == null;
     }
 
     @Override
@@ -87,6 +100,7 @@ public class ExcerciseNode extends EntityNode {
         result = 31 * result + level;
         result = 31 * result + series;
         result = 31 * result + repetations;
+        result = 31 * result + (timestamp != null ? timestamp.hashCode() : 0);
         return result;
     }
 
@@ -97,6 +111,7 @@ public class ExcerciseNode extends EntityNode {
                 ", level=" + level +
                 ", series=" + series +
                 ", repetations=" + repetations +
+                ", timestamp=" + timestamp +
                 '}';
     }
 }
