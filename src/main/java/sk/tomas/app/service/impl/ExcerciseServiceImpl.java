@@ -37,6 +37,7 @@ public class ExcerciseServiceImpl extends BaseServiceImpl<Excercise> implements 
     @Override
     public UUID create(ExcerciseInput excerciseInput) {
         Excercise excercise = mapper.map(excerciseInput, Excercise.class);
+        excercise.setTimestamp(System.currentTimeMillis());
         UUID uuid = excerciseDao.create(excercise);
         log.info("Zaznam cvicenia vytvoreny: {}", excercise);
         return uuid;
