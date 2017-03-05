@@ -1,1 +1,1 @@
-insert into Identity(uuid, name, surname, login, email, age, encodedPassword) values('e0f899cf-3c3d-490f-991d-6a545feb6de9','Fero', 'Taraba','ferko', 'ferko@taraba.sk', 35,'password');
+insert into Excercise(uuid, level, name, repetations, series, timestamp) values('e0f899cf-3c3d-490f-991d-6a545feb6de9','2', 'DREPY',20, 2, 14000035);

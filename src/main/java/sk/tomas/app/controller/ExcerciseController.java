@@ -67,7 +67,7 @@ public class ExcerciseController implements Controller<ExcerciseInput, Excercise
 
     @Override
     public Controller getController() {
-        return null;
+        return this;
     }
 
 

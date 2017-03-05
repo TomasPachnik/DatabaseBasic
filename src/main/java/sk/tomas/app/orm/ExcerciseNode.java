@@ -1,10 +1,15 @@
 package sk.tomas.app.orm;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 /**
  * Created by tomas on 5.3.2017.
  */
+
+@Entity
+@Table(name = "Excercise")
 public class ExcerciseNode extends EntityNode {
 
     //nazov cvicenia
