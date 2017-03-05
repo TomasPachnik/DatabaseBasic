@@ -28,4 +28,14 @@ public class ExcerciseTest extends AbstractTest {
         super.createTest();
     }
 
+    @Test
+    public void updateExcerciseTest() throws OutputValidationException, InputValidationException {
+        super.updateTest();
+    }
+
+    @Test
+    public void deleteExcerciseTest() throws OutputValidationException, InputValidationException {
+        super.deleteTest();
+    }
+
 }
