@@ -31,13 +31,14 @@ public class ExcerciseController implements Controller<ExcerciseInput, Excercise
     private ExcerciseService excerciseService;
 
     @Override
-    @RequestMapping(method = RequestMethod.POST, value = "/create")
+    @RequestMapping(method = RequestMethod.POST)
     public UUID create(ExcerciseInput excerciseInput) throws InputValidationException {
         validateInput(excerciseInput);
         return excerciseService.create(excerciseInput);
     }
 
     @Override
+    @RequestMapping(method = RequestMethod.DELETE, value = "/{uuid}")
     public void delete(UUID uuid) throws InputValidationException {
         excerciseService.delete(uuid);
     }
@@ -64,11 +65,13 @@ public class ExcerciseController implements Controller<ExcerciseInput, Excercise
     }
 
     @Override
+    @RequestMapping(method = RequestMethod.GET, value = "/count")
     public Count getCount() throws OutputValidationException {
         return new Count(excerciseService.count());
     }
 
     @Override
+    @RequestMapping(method = RequestMethod.POST, value = "/{uuid}")
     public void update(UUID uuid, ExcerciseInput excerciseInput) throws InputValidationException {
         validateInput(excerciseInput);
         excerciseService.update(excerciseInput, uuid);
