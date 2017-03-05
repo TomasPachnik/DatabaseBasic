@@ -1,37 +1,21 @@
-package sk.tomas.app.orm;
+package sk.tomas.app.model;
 
-import javax.persistence.Column;
+import sk.tomas.app.model.base.Entity;
 
 /**
  * Created by tomas on 5.3.2017.
  */
-public class ExcerciseNode extends EntityNode {
+public class Excercise extends Entity {
 
-    //nazov cvicenia
-    @Column(unique = true, nullable = false, length = 50)
     private String name;
 
-    //uroven cviku
-    @Column
     private int level;
 
-    //pocet serii
-    @Column
     private int series;
 
-    //pocet opakovani serie
-    @Column
     private int repetations;
 
-    public ExcerciseNode() {
-    }
-
-    public ExcerciseNode(String uuid, String name, int level, int series, int repetations) {
-        super(uuid);
-        this.name = name;
-        this.level = level;
-        this.series = series;
-        this.repetations = repetations;
+    public Excercise() {
     }
 
     public String getName() {
@@ -70,20 +54,18 @@ public class ExcerciseNode extends EntityNode {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
 
-        ExcerciseNode that = (ExcerciseNode) o;
+        Excercise excercise = (Excercise) o;
 
-        if (level != that.level) return false;
-        if (series != that.series) return false;
-        if (repetations != that.repetations) return false;
-        return name != null ? name.equals(that.name) : that.name == null;
+        if (level != excercise.level) return false;
+        if (series != excercise.series) return false;
+        if (repetations != excercise.repetations) return false;
+        return name != null ? name.equals(excercise.name) : excercise.name == null;
     }
 
     @Override
     public int hashCode() {
-        int result = super.hashCode();
-        result = 31 * result + (name != null ? name.hashCode() : 0);
+        int result = name != null ? name.hashCode() : 0;
         result = 31 * result + level;
         result = 31 * result + series;
         result = 31 * result + repetations;
@@ -92,7 +74,7 @@ public class ExcerciseNode extends EntityNode {
 
     @Override
     public String toString() {
-        return "ExcerciseNode{" +
+        return "Excercise{" +
                 "name='" + name + '\'' +
                 ", level=" + level +
                 ", series=" + series +
