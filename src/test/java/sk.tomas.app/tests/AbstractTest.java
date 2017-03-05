@@ -6,7 +6,6 @@ import org.junit.rules.ExpectedException;
 import sk.tomas.app.controller.Controller;
 import sk.tomas.app.exception.InputValidationException;
 import sk.tomas.app.exception.OutputValidationException;
-import sk.tomas.app.util.CustomStringManufacturer;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
@@ -24,9 +23,7 @@ public abstract class AbstractTest<T extends Controller, I, O> extends BaseTest 
     private I i;
 
     public void setUp(T t, I i) {
-        CustomStringManufacturer customStringManufacturer = new CustomStringManufacturer();
         factory = new PodamFactoryImpl();
-        factory.getStrategy().addOrReplaceTypeManufacturer(String.class, customStringManufacturer);
         this.t = t;
         this.i = i;
     }

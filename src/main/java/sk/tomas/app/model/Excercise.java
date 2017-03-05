@@ -1,6 +1,6 @@
 package sk.tomas.app.model;
 
-import sk.tomas.app.enums.ExcercisesEnum;
+import sk.tomas.app.iam.model.enums.ExcercisesEnum;
 import sk.tomas.app.model.base.Entity;
 
 /**

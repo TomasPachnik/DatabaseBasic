@@ -16,9 +16,7 @@ public class Utils {
     }
 
     public static ExcerciseInput randomExcercise() {
-        ExcerciseInput excerciseInput = factory.manufacturePojo(ExcerciseInput.class);
-        excerciseInput.setName("ZHYBY");
-        return excerciseInput;
+        return factory.manufacturePojo(ExcerciseInput.class);
     }
 
 }
