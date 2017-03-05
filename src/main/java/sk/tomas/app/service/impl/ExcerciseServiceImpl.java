@@ -12,6 +12,7 @@ import sk.tomas.app.iam.model.output.ExcerciseOutput;
 import sk.tomas.app.model.Excercise;
 import sk.tomas.app.service.ExcerciseService;
 
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -47,4 +48,27 @@ public class ExcerciseServiceImpl extends BaseServiceImpl<Excercise> implements 
         return mapper.map(excercise, ExcerciseOutput.class);
 
     }
+
+    @Override
+    public List<ExcerciseOutput> getList() {
+        List<Excercise> list = list();
+        return mapper.mapAsList(list, ExcerciseOutput.class);
+    }
+
+    @Override
+    public void update(ExcerciseInput excerciseInput, UUID uuid) {
+        Excercise old = findByUuid(uuid);
+        Excercise excercise = mapper.map(excerciseInput, Excercise.class);
+        excercise.setUuid(uuid);
+        update(excercise);
+        log.info("Cvicenie '{}' aktualizovane na '{}'", old, excerciseInput);
+    }
+
+    @Override
+    public void delete(UUID uuid) {
+        Excercise excercise = findByUuid(uuid);
+        getDao().delete(uuid);
+        log.info("Zmazane cvicenie '{}'.", excercise);
+    }
+
 }

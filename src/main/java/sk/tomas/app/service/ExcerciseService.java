@@ -4,6 +4,7 @@ import sk.tomas.app.iam.model.input.ExcerciseInput;
 import sk.tomas.app.iam.model.output.ExcerciseOutput;
 import sk.tomas.app.model.Excercise;
 
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -12,6 +13,10 @@ import java.util.UUID;
 public interface ExcerciseService extends BaseService<Excercise> {
 
     UUID create(ExcerciseInput excerciseInput);
+
     ExcerciseOutput findExcerciseOutputByUuid(UUID uuid);
 
+    List<ExcerciseOutput> getList();
+
+    void update(ExcerciseInput excerciseInput, UUID uuid);
 }

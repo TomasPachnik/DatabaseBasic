@@ -16,6 +16,8 @@ import java.util.List;
 import java.util.UUID;
 
 import static sk.tomas.app.util.Constants.BASE_PATH;
+import static sk.tomas.app.validator.ExcerciseValidator.validateInput;
+import static sk.tomas.app.validator.ExcerciseValidator.validateOutput;
 
 /**
  * Created by tomas on 5.3.2017.
@@ -31,23 +33,29 @@ public class ExcerciseController implements Controller<ExcerciseInput, Excercise
     @Override
     @RequestMapping(method = RequestMethod.POST, value = "/create")
     public UUID create(ExcerciseInput excerciseInput) throws InputValidationException {
+        validateInput(excerciseInput);
         return excerciseService.create(excerciseInput);
     }
 
     @Override
     public void delete(UUID uuid) throws InputValidationException {
-
+        excerciseService.delete(uuid);
     }
 
     @Override
     @RequestMapping(method = RequestMethod.GET, value = "/{uuid}")
     public ExcerciseOutput getSingle(UUID uuid) throws InputValidationException, OutputValidationException {
-        return excerciseService.findExcerciseOutputByUuid(uuid);
+        ExcerciseOutput excerciseOutput = excerciseService.findExcerciseOutputByUuid(uuid);
+        validateOutput(excerciseOutput);
+        return excerciseOutput;
     }
 
     @Override
+    @RequestMapping(method = RequestMethod.GET)
     public List<ExcerciseOutput> list() throws OutputValidationException {
-        return null;
+        List<ExcerciseOutput> list = excerciseService.getList();
+        validateOutput(list);
+        return list;
     }
 
     @Override
@@ -57,12 +65,13 @@ public class ExcerciseController implements Controller<ExcerciseInput, Excercise
 
     @Override
     public Count getCount() throws OutputValidationException {
-        return null;
+        return new Count(excerciseService.count());
     }
 
     @Override
     public void update(UUID uuid, ExcerciseInput excerciseInput) throws InputValidationException {
-
+        validateInput(excerciseInput);
+        excerciseService.update(excerciseInput, uuid);
     }
 
     @Override
