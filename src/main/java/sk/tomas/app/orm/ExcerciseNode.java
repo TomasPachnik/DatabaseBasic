@@ -13,7 +13,7 @@ import javax.persistence.Table;
 public class ExcerciseNode extends EntityNode {
 
     //nazov cvicenia
-    @Column(unique = true, nullable = false, length = 50)
+    @Column(nullable = false, length = 50)
     private String name;
 
     //uroven cviku
